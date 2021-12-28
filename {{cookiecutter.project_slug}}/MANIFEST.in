@@ -1,3 +1,17 @@
+graft src
+
+prune .github
+prune data
+prune docs
+prune tests
+prune temp
+prune scripts
+prune examples
+include requirements.txt
+exclude requirements-dev.txt
+exclude pytest.ini .bumpversion.cfg .editorconfig
+exclude tasks.py
+
 {% if cookiecutter.create_author_file == 'y' -%}
 include AUTHORS.rst
 {% endif -%}
@@ -6,8 +20,12 @@ include HISTORY.rst
 include LICENSE
 include README.rst
 
+
 recursive-include tests *
 recursive-exclude * __pycache__
 recursive-exclude * *.py[co]
+global-exclude *.py[cod] __pycache__ *.dylib *.nb[ic] .DS_Store
 
 recursive-include docs *.rst conf.py Makefile make.bat *.jpg *.png *.gif
+include *.txt
+include tox.ini
